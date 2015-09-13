@@ -44,8 +44,7 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('-f', '--file', help='Specify an Ipython notebook if you only want to convert one. '
-                                             '(This will overwrite default.)')
+    parser.add_argument('-f', '--file')
     args = parser.parse_args()
 
     if args.file is None:
@@ -54,7 +53,6 @@ if __name__ == '__main__':
     elif not os.path.isfile(args.file):
         print("No Image "+args.file+" found!")
         exit()
-
 
     a = AsciiArt(args.file)
     print(a.draw())
