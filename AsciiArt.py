@@ -23,12 +23,13 @@ class AsciiArt:
         self.pixel_size = self._calculate_pixel_size()
 
     def _calculate_pixel_size(self):
-        return self.img.width / self.FINAL_WIDTH
+        px_size =  self.img.width / self.FINAL_WIDTH
+        return 1 if px_size < 1 else px_size
 
     def get_char(self, intensity):
         intensity_string = " .:-=+*#%@"[::-1]
-        steps = len(intensity_string)
-        return intensity_string[int(steps * intensity - 1)]
+        steps = len(intensity_string)-1
+        return intensity_string[int(steps * intensity)]
 
     def draw(self):
         img_string = ""
